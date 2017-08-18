@@ -9,6 +9,7 @@ module Tlsh
       end
     end
 
+    # returns diff against another TlshInstance. The closer to 0, the smaller the diff.
     def diff(other)
       Distance.diff_total(self, other, true)
     end
@@ -23,11 +24,15 @@ module Tlsh
       binary.map { |i| i.to_i.to_s(16) }.join('')
     end
 
+    def comparable?
+      checksum && l_value && q1_ratio && q2_ratio && q_ratio && body
+    end
+
     private
 
     def swap_byte(input)
       out = ((input & 0xF0) >> 4) & 0x0F
-      out |= ((input & 0x0F) << 4) & 0xF0
+      out | ((input & 0x0F) << 4) & 0xF0
     end
   end
 end

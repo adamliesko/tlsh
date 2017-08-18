@@ -1,3 +1,4 @@
+# DigestHash module implements Pearson Hash algorithm used in TLSH computation
 module DigestHash
   class << self
     # frozen random initialization

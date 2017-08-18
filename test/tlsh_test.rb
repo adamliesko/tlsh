@@ -9,19 +9,31 @@ class TlshTest < Minitest::Test
   end
 
   def test_hash_files
-    assert_equal('8ed0222fc3080233a02b03b3330fc3a82f8308c2fa0a080b8bae2cca0c3', Tlsh.hash_file(File.join(FIXTURES_PATH, 'test_file_1')).string.to_s)
-    assert_equal('b2317c38fac0333c8ff7d3ff31fcf3b7fb3f9a3ef3bf3c880cfc43ebf97f3cc73fbfc', Tlsh.hash_file(File.join(FIXTURES_PATH, 'test_file_2')).string.to_s)
-    assert_equal('ea314a879aca13ba2ea6436afa8fa7e7bfafc6bca3389a2aa8eaab789abc6ea3babfa', Tlsh.hash_file(File.join(FIXTURES_PATH, 'test_file_3')).string.to_s)
-    assert_equal('5111c1fb371bb32cef13f056b8bcddf23fb25fbfef3ec4247ef345333f7cd5ffc54', Tlsh.hash_file(File.join(FIXTURES_PATH, 'test_file_4')).string.to_s)
-    assert_equal('e1d137377e9e43155fe26379d7d9cdaed76ce4342ad79799dcea9b2af55693ce727769', Tlsh.hash_file(File.join(FIXTURES_PATH, 'test_file_5')).string.to_s)
+    t1 = Tlsh.hash_file(File.join(FIXTURES_PATH, 'test_file_1')).string.to_s
+    assert_equal('8ed0222fc3080233a02b03b3330fc3a82f8308c2fa0a080b8bae2cca0c3', t1)
+
+    t2 = Tlsh.hash_file(File.join(FIXTURES_PATH, 'test_file_2')).string.to_s
+    assert_equal('b2317c38fac0333c8ff7d3ff31fcf3b7fb3f9a3ef3bf3c880cfc43ebf97f3cc73fbfc', t2)
+
+    t3 = Tlsh.hash_file(File.join(FIXTURES_PATH, 'test_file_3')).string.to_s
+    assert_equal('ea314a879aca13ba2ea6436afa8fa7e7bfafc6bca3389a2aa8eaab789abc6ea3babfa', t3)
+
+    t4 = Tlsh.hash_file(File.join(FIXTURES_PATH, 'test_file_4')).string.to_s
+    assert_equal('5111c1fb371bb32cef13f056b8bcddf23fb25fbfef3ec4247ef345333f7cd5ffc54', t4)
+
+    t5 = Tlsh.hash_file(File.join(FIXTURES_PATH, 'test_file_5')).string.to_s
+    assert_equal('e1d137377e9e43155fe26379d7d9cdaed76ce4342ad79799dcea9b2af55693ce727769', t5)
   end
 
   def test_diff_files
-    assert_equal(501, Tlsh.diff_files(File.join(FIXTURES_PATH, 'test_file_1'), File.join(FIXTURES_PATH, 'test_file_2')))
-    assert_equal(0, Tlsh.diff_files(File.join(FIXTURES_PATH, 'test_file_1'), File.join(FIXTURES_PATH, 'test_file_1')))
-    assert_equal(1061, Tlsh.diff_files(File.join(FIXTURES_PATH, 'test_file_1'), File.join(FIXTURES_PATH, 'test_file_8_lena.png')))
-    assert_equal(952, Tlsh.diff_files(File.join(FIXTURES_PATH, 'test_file_3'), File.join(FIXTURES_PATH, 'test_file_8_lena.png')))
-    assert_equal(610, Tlsh.diff_files(File.join(FIXTURES_PATH, 'test_file_7_lena.jpg'), File.join(FIXTURES_PATH, 'test_file_8_lena.png')))
+    file1 = File.join(FIXTURES_PATH, 'test_file_1')
+    file_lena8 = File.join(FIXTURES_PATH, 'test_file_8_lena.png')
+
+    assert_equal(501, Tlsh.diff_files(file1, File.join(FIXTURES_PATH, 'test_file_2')))
+    assert_equal(0, Tlsh.diff_files(file1, file1))
+    assert_equal(1061, Tlsh.diff_files(file1, file_lena8))
+    assert_equal(952, Tlsh.diff_files(File.join(FIXTURES_PATH, 'test_file_3'), file_lena8))
+    assert_equal(610, Tlsh.diff_files(File.join(FIXTURES_PATH, 'test_file_7_lena.jpg'), file_lena8))
 
     assert_raises Errno::ENOENT do
       Tlsh.diff_files('not_found', '')

@@ -2,6 +2,8 @@ require 'tlsh/version'
 require 'tlsh/distance/distance'
 require 'tlsh/digest_hash/pearson'
 
+# Tlsh module implement interface for TLSH (Trend Micro Locality Sensitive Hash) computation.
+# TLSH is usable for diff and similarity computations of binary data, because of the locality sensitivity.
 module Tlsh
   LOG1_5 = 0.4054651
   LOG1_3 = 0.26236426
@@ -55,21 +57,24 @@ module Tlsh
         h = 0
         (0..3).each do |j|
           k = buckets[4 * i + j]
-          add = if q3 < k
-                  3 << j * 2
-                elsif q2 < k
-                  2 << j * 2
-                elsif q1 < k
-                  1 << j * 2
-                end
-          add ||= 0
-          h += add
-
+          h += addition(q1, q2, q3, j, k)
           bin_hash[CODE_SIZE - 1 - i] = h
         end
       end
 
       bin_hash
+    end
+
+    def addition(q1, q2, q3, j, k)
+      add = if q3 < k
+              3 << j * 2
+            elsif q2 < k
+              2 << j * 2
+            elsif q1 < k
+              1 << j * 2
+            end
+      add ||= 0
+      add
     end
 
     def fill_buckets(input)
@@ -87,31 +92,31 @@ module Tlsh
       chunk = chunk_slice[0..5].dup
       chunk.reverse!
       file_size = chunk_slice.size
-      chunk_3 = []
+      chunk3 = []
 
       loop do
-        chunk_3[0] = chunk[0]
-        chunk_3[1] = chunk[1]
-        chunk_3[2] = checksum
-        checksum = DigestHash.pearson_hash(0, chunk_3)
+        chunk3[0] = chunk[0]
+        chunk3[1] = chunk[1]
+        chunk3[2] = checksum
+        checksum = DigestHash.pearson_hash(0, chunk3)
 
-        chunk_3[2] = chunk[2]
-        buckets[DigestHash.pearson_hash(salt[0], chunk_3)] += 1
+        chunk3[2] = chunk[2]
+        buckets[DigestHash.pearson_hash(salt[0], chunk3)] += 1
 
-        chunk_3[2] = chunk[3]
-        buckets[DigestHash.pearson_hash(salt[1], chunk_3)] += 1
+        chunk3[2] = chunk[3]
+        buckets[DigestHash.pearson_hash(salt[1], chunk3)] += 1
 
-        chunk_3[1] = chunk[2]
-        buckets[DigestHash.pearson_hash(salt[2], chunk_3)] += 1
+        chunk3[1] = chunk[2]
+        buckets[DigestHash.pearson_hash(salt[2], chunk3)] += 1
 
-        chunk_3[2] = chunk[4]
-        buckets[DigestHash.pearson_hash(salt[3], chunk_3)] += 1
+        chunk3[2] = chunk[4]
+        buckets[DigestHash.pearson_hash(salt[3], chunk3)] += 1
 
-        chunk_3[1] = chunk[1]
-        buckets[DigestHash.pearson_hash(salt[4], chunk_3)] += 1
+        chunk3[1] = chunk[1]
+        buckets[DigestHash.pearson_hash(salt[4], chunk3)] += 1
 
-        chunk_3[1] = chunk[3]
-        buckets[DigestHash.pearson_hash(salt[5], chunk_3)] += 1
+        chunk3[1] = chunk[3]
+        buckets[DigestHash.pearson_hash(salt[5], chunk3)] += 1
 
         chunk[1..-1] = chunk[0..3].dup
         current_window += 1
