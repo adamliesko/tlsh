@@ -11,14 +11,6 @@ The computed hash is 35 bytes long (output as 70 hexadecimal characters). The fi
 DISCLAIMER: Based on [Trendmicro's TLSH](https://github.com/trendmicro/tlsh) and work of [glaslos](https://github.com/glaslos) Go port [tlsh](https://github.com/glaslos/tlsh).
 ## Installation
 
-Add this line to your application's Gemfile and execute bundler:
-
-```ruby
-gem 'tlsh' && bundle
-```
-
-Or install it yourself as:
-
     $ gem install tlsh
 
 ## Usage
