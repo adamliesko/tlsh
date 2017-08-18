@@ -1,4 +1,5 @@
 [![Build Status](https://travis-ci.org/adamliesko/tlsh.svg?branch=master)](https://travis-ci.org/adamliesko/tlsh)
+[![Coverage Status](https://coveralls.io/repos/github/adamliesko/tlsh/badge.svg?branch=master)](https://coveralls.io/github/adamliesko/tlsh?branch=master)
 
 # TLSH - Trend Micro Locality Sensitive Hash
   
@@ -26,13 +27,13 @@ Or install it yourself as:
 
 Computing a diff between two files
 ```ruby
-> Tlsh.diff_files('./fixtures/test_file_1', './fixtures/test_file_2')
+> Tlsh.diff_files('./../fixtures/test_file_1', './../fixtures/test_file_2')
  => 501
 ```
 
 Getting a hash of a file
 ```ruby
-> tlsh = Tlsh.hash_file('./fixtures/test_file_1', './fixtures/test_file_2')
+> tlsh = Tlsh.hash_file('./../fixtures/test_file_1', './../fixtures/test_file_2')
  => 501
 > tlsh.string.to_s
  => "b2317c38fac0333c8ff7d3ff31fcf3b7fb3f9a3ef3bf3c880cfc43ebf97f3cc73fbfc"
