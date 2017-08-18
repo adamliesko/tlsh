@@ -13,28 +13,28 @@ class TlshTest < Minitest::Test
     assert_equal('8ed0222fc3080233a02b03b3330fc3a82f8308c2fa0a080b8bae2cca0c3', t1)
 
     t2 = Tlsh.hash_file(File.join(FIXTURES_PATH, 'test_file_2')).string.to_s
-    assert_equal('b2317c38fac0333c8ff7d3ff31fcf3b7fb3f9a3ef3bf3c880cfc43ebf97f3cc73fbfc', t2)
+    assert_equal('b231c738fac0333c8ffbe3ff32fcf3bbfb3faa3ef3bf3c880cfc83ebfabf3ccb3fbfc', t2)
 
     t3 = Tlsh.hash_file(File.join(FIXTURES_PATH, 'test_file_3')).string.to_s
-    assert_equal('ea314a879aca13ba2ea6436afa8fa7e7bfafc6bca3389a2aa8eaab789abc6ea3babfa', t3)
-
-    t4 = Tlsh.hash_file(File.join(FIXTURES_PATH, 'test_file_4')).string.to_s
-    assert_equal('5111c1fb371bb32cef13f056b8bcddf23fb25fbfef3ec4247ef345333f7cd5ffc54', t4)
-
-    t5 = Tlsh.hash_file(File.join(FIXTURES_PATH, 'test_file_5')).string.to_s
-    assert_equal('e1d137377e9e43155fe26379d7d9cdaed76ce4342ad79799dcea9b2af55693ce727769', t5)
+    assert_equal('ea31a48baaca23ba2eaa83aafa8fabebbfafcabca338aa2aa8eaabb8aabcaea3babfa', t3)
   end
 
   def test_diff_files
     file1 = File.join(FIXTURES_PATH, 'test_file_1')
     file_lena8 = File.join(FIXTURES_PATH, 'test_file_8_lena.png')
 
-    assert_equal(501, Tlsh.diff_files(file1, File.join(FIXTURES_PATH, 'test_file_2')))
-    assert_equal(0, Tlsh.diff_files(file1, file1))
-    assert_equal(1061, Tlsh.diff_files(file1, file_lena8))
-    assert_equal(952, Tlsh.diff_files(File.join(FIXTURES_PATH, 'test_file_3'), file_lena8))
-    assert_equal(610, Tlsh.diff_files(File.join(FIXTURES_PATH, 'test_file_7_lena.jpg'), file_lena8))
+    assert_equal(500, Tlsh.diff_files(file1, File.join(FIXTURES_PATH, 'test_file_2')))
+    assert_equal(1057, Tlsh.diff_files(file1, file_lena8))
+    assert_equal(917, Tlsh.diff_files(File.join(FIXTURES_PATH, 'test_file_3'), file_lena8))
+    assert_equal(593, Tlsh.diff_files(File.join(FIXTURES_PATH, 'test_file_7_lena.jpg'), file_lena8))
+  end
 
+  def test_diff_identical_files
+    file1 = File.join(FIXTURES_PATH, 'test_file_1')
+    assert_equal(0, Tlsh.diff_files(file1, file1))
+  end
+
+  def test_diff_files_raises_error
     assert_raises Errno::ENOENT do
       Tlsh.diff_files('not_found', '')
     end
@@ -42,7 +42,7 @@ class TlshTest < Minitest::Test
 
   def test_hash_bytes
     tlsh = Tlsh.hash_bytes(INPUT_DATA)
-    assert_equal('d4d01271eaf3e9b9f0b4cf7b9fc3ee74ae723b32373ee249138b8568ebbbc3ad2a7a', tlsh.string)
-    assert_equal([212, 208, 18, 113, 234, 243, 233, 185, 240, 180, 207, 123, 159, 195, 238, 7, 74, 14, 114, 59, 50, 55, 62, 226, 73, 19, 139, 133, 104, 235, 187, 195, 173, 42, 122], tlsh.binary)
+    assert_equal('d4d021b2eaf3eabaf0b8cfbbafc3eeb8aeb23b323b3ee28a238b8aa8ebbbc3ae2aba', tlsh.string)
+    assert_equal([212, 208, 33, 178, 234, 243, 234, 186, 240, 184, 207, 187, 175, 195, 238, 11, 138, 14, 178, 59, 50, 59, 62, 226, 138, 35, 139, 138, 168, 235, 187, 195, 174, 42, 186], tlsh.binary)
   end
 end
