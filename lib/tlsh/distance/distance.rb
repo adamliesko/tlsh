@@ -4623,6 +4623,7 @@ module Distance
       12, 8, 7, 6, 8, 4, 3, 2, 7, 3, 2, 1, 6, 2, 1, 0
     ]
   ].freeze
+
   class << self
     # diff_total calculates diff between two Tlsh hashes a and b for hash header and body
     def diff_total(a, b, is_len_diff)
