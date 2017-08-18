@@ -4656,7 +4656,7 @@ module Distance
         # checksum diff, currently only 1 byte checksum is supported
         diff += 1 if a.checksum != b.checksum
 
-        diff + digest_distance(a.code, b.code)
+        diff + digest_distance(a.body, b.body)
       end
     end
 

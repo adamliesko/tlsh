@@ -1,6 +1,6 @@
 module Tlsh
   class TlshInstance
-    attr_accessor :checksum, :l_value, :q1_ratio, :q2_ratio, :q_ratio, :code
+    attr_accessor :checksum, :l_value, :q1_ratio, :q2_ratio, :q_ratio, :body
 
     def initialize(params = {})
       params.each do |key, value|
@@ -15,12 +15,12 @@ module Tlsh
 
     # returns the binary representation of the hash
     def binary
-      [swap_byte(checksum), swap_byte(l_value), q_ratio] + code
+      [swap_byte(checksum), swap_byte(l_value), q_ratio] + body
     end
 
     # returns the string representation of the hash
     def string
-      binary.map{|i | i.to_i.to_s(16)}.join('')
+      binary.map { |i| i.to_i.to_s(16) }.join('')
     end
 
     private

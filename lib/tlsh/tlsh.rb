@@ -32,6 +32,7 @@ module Tlsh
     end
 
     private
+
     def tlsh_hash(input)
       buckets, checksum, filesize = fill_buckets(input)
 
@@ -44,7 +45,7 @@ module Tlsh
       # get the binary buckets representation
       bin_hash = buckets_binary(buckets, q1, q2, q3)
 
-      TlshInstance.new(checksum: checksum, l_value: l_value(filesize), q1_ratio: q1_ratio, q2_ratio: q2_ratio, q_ratio: q_ratio, code: bin_hash)
+      TlshInstance.new(checksum: checksum, l_value: l_value(filesize), q1_ratio: q1_ratio, q2_ratio: q2_ratio, q_ratio: q_ratio, body: bin_hash)
     end
 
     def buckets_binary(buckets, q1, q2, q3)
