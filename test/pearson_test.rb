@@ -1,4 +1,4 @@
-require './test_helper'
+require 'test_helper'
 
 class PearsonTest < Minitest::Test
   def test_pearson_hash
