@@ -1,3 +1,4 @@
+[![Gem Version](https://badge.fury.io/rb/tlsh.svg)](https://badge.fury.io/rb/tlsh)
 [![Build Status](https://travis-ci.org/adamliesko/tlsh.svg?branch=master)](https://travis-ci.org/adamliesko/tlsh)
 [![Coverage Status](https://coveralls.io/repos/github/adamliesko/tlsh/badge.svg?branch=master)](https://coveralls.io/github/adamliesko/tlsh?branch=master)
 
