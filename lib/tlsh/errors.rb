@@ -1,0 +1,2 @@
+class MalformedInputError < StandardError
+end

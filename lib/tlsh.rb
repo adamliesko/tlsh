@@ -1,6 +1,7 @@
 require 'tlsh/digest_hash/pearson'
 require 'tlsh/distance/distance'
 require 'tlsh/distance/precomputed_bits'
+require 'tlsh/errors'
 require 'tlsh/buckets'
 require 'tlsh/quartiles'
 require 'tlsh/tlsh'

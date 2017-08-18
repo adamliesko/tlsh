@@ -29,4 +29,11 @@ class TlshInstance < Minitest::Test
     other = Tlsh::TlshInstance.new(checksum: 23, l_value: 2, q1_ratio: 2, q2_ratio: 2, q_ratio: 34, body: [1, 251, 48, 128, 35, 3, 160, 2, 176, 59, 51, 48, 15, 195, 10, 130, 248, 48, 8, 194, 250, 0, 10, 0, 128, 184, 186, 14, 2, 204, 160, 195])
     assert_equal(141, @tlsh.diff(other))
   end
+
+  def test_comparable
+    assert @tlsh.comparable?
+
+    @tlsh.l_value = nil
+    refute @tlsh.comparable?
+  end
 end
