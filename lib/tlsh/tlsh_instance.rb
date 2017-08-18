@@ -1,4 +1,5 @@
 module Tlsh
+  # TlshInstance represents single TLSH instance
   class TlshInstance
     attr_accessor :checksum, :l_value, :q1_ratio, :q2_ratio, :q_ratio, :body
 

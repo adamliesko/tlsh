@@ -4,7 +4,12 @@ module Distance
     # diff_total calculates diff between two Tlsh hashes a and b for hash header and body
     def diff_total(a, b, is_len_diff)
       return -1 unless a.comparable? && b.comparable?
+      compute_diff(a, b, is_len_diff)
+    end
 
+    private
+
+    def compute_diff(a, b, is_len_diff)
       diff = 0
 
       if is_len_diff
@@ -17,8 +22,6 @@ module Distance
       diff += 1 if a.checksum != b.checksum
       diff + digest_distance(a.body, b.body)
     end
-
-    private
 
     def length_diff(len_diff)
       return len_diff if len_diff < 1
