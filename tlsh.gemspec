@@ -11,13 +11,14 @@ Gem::Specification.new do |spec|
   spec.email         = ['adamliesko@gmail.com']
 
   spec.summary       = 'A fuzzy matching library which creates hashes that can be used for similarity comparisons.'
-  spec.description   = 'tlsh is a fuzzy matching library which creates hashes that can be used for similarity comparisons'
-  spec.homepage      = "XTOD: Put your gem's website or public repo URL here."
+  spec.description   = 'tlsh isa fuzzy matching library, which hashes can be used for similarity comparison.'
+  spec.homepage      = 'https://github.com/adamliesko/tlsh'
   spec.license       = 'MIT'
 
   spec.files = `git ls-files -z`.split("\x0").reject do |f|
     f.match(%r{^(test|spec|features)/})
   end
+
   spec.bindir        = 'exe'
   spec.executables   = spec.files.grep(%r{^exe/}) { |f| File.basename(f) }
   spec.require_paths = ['lib']

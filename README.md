@@ -9,15 +9,11 @@ The computed hash is 35 bytes long (output as 70 hexidecimal charactes). The fir
 
 ## Installation
 
-Add this line to your application's Gemfile:
+Add this line to your application's Gemfile and execute bundler:
 
 ```ruby
-gem 'tlsh'
+gem 'tlsh' && bundle
 ```
-
-And then execute:
-
-    $ bundle
 
 Or install it yourself as:
 
@@ -45,15 +41,9 @@ Getting a hash of bytes
  => #<Tlsh::TlshInstance:0x007fddf7cf7f60 @checksum=77, @l_value=13, @q1_ratio=1, @q2_ratio=2, @q_ratio=18, @code=[113, 234, 243, 233, 185, 240, 180, 207, 123, 159, 195, 238, 7, 74, 14, 114, 59, 50, 55, 62, 226, 73, 19, 139, 133, 104, 235, 187, 195, 173, 42, 122]>
 ```
 
-## Development
-
-After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake test` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
-
-To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and tags, and push the `.gem` file to [rubygems.org](https://rubygems.org).
-
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/tlsh. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
+Bug reports and pull requests are welcome on GitHub at https://github.com/[adamliesko]/tlsh. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
 
 ## License
 
@@ -61,4 +51,4 @@ The gem is available as open source under the terms of the [MIT License](http://
 
 ## Code of Conduct
 
-Everyone interacting in the Tlsh project’s codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](https://github.com/[USERNAME]/tlsh/blob/master/CODE_OF_CONDUCT.md).
+Everyone interacting in the Tlsh project’s codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](https://github.com/[adamliesko]/tlsh/blob/master/CODE_OF_CONDUCT.md).
