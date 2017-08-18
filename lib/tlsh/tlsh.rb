@@ -10,6 +10,11 @@ module Tlsh
   LOG1_1 = 0.095310180
 
   class << self
+    ##
+    # Computes TLSH based diff between two files.
+    #
+    # The closer to 0, the smaller the diff. If files are not found, error is raised.
+
     def diff_files(filename, other_filename)
       file_a = File.read(filename)
       file_b = File.read(other_filename)
@@ -19,11 +24,18 @@ module Tlsh
       tslh_a.diff(tslh_b)
     end
 
-    # hash_file calculates the TLSH for the input file
+    ##
+    # Computes TLSH based diff between two files.
+    #
+    # The closer to 0, the smaller the diff. If files are not found, error is raised.
+
     def hash_file(filename)
       file = File.read(filename)
       tlsh_hash(file.bytes)
     end
+
+    ##
+    # Computes TLSH of an bytes input.
 
     def hash_bytes(blob)
       tlsh_hash(blob)

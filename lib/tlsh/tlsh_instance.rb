@@ -41,6 +41,7 @@ module Tlsh
     end
 
     private
+
     def comparable?
       checksum && l_value && q1_ratio && q2_ratio && q_ratio && body
     end
