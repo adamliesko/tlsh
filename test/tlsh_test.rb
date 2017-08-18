@@ -45,4 +45,10 @@ class TlshTest < Minitest::Test
     assert_equal('d4d021b2eaf3eabaf0b8cfbbafc3eeb8aeb23b323b3ee28a238b8aa8ebbbc3ae2aba', tlsh.string)
     assert_equal([212, 208, 33, 178, 234, 243, 234, 186, 240, 184, 207, 187, 175, 195, 238, 11, 138, 14, 178, 59, 50, 59, 62, 226, 138, 35, 139, 138, 168, 235, 187, 195, 174, 42, 186], tlsh.binary)
   end
+
+  def test_hash_bytes_raises_error_on_small_input
+      assert_raises Tlsh::InputTooSmallError do
+        Tlsh.hash_bytes("This is too short".bytes)
+      end
+  end
 end

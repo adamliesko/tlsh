@@ -20,8 +20,8 @@ module DigestHash
              51, 65, 28, 144, 254, 221, 93, 189, 194, 139, 112, 43, 71, 109, 184, 209].freeze
 
     def pearson_hash(salt, keys)
-      raise MalformedInputError, 'Missing keys for pearson_hash' if keys.nil? || keys.empty?
-      raise MalformedInputError, 'Missing salt for pearson_hash' if salt.nil?
+      raise Tlsh::MalformedInputError, 'Missing keys for pearson_hash' if keys.nil? || keys.empty?
+      raise Tlsh::MalformedInputError, 'Missing salt for pearson_hash' if salt.nil?
 
       h = 0
       h = TABLE[h ^ salt]

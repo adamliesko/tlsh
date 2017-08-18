@@ -44,6 +44,7 @@ module Tlsh
     private
 
     def tlsh_hash(input)
+      raise Tlsh::InputTooSmallError if input.size < 256
       buckets, checksum, filesize = Buckets.fill_buckets(input)
 
       # get the quartiles and their ratio

@@ -39,7 +39,7 @@ module Tlsh
     def string
       binary.map { |i| i.to_i.to_s(16) }.join('')
     end
-    
+
     def comparable?
       checksum && l_value && q1_ratio && q2_ratio && q_ratio && body
     end
