@@ -11,7 +11,7 @@ Gem::Specification.new do |spec|
   spec.email         = ['adamliesko@gmail.com']
 
   spec.summary       = 'A fuzzy matching library which creates hashes that can be used for similarity comparisons.'
-  spec.description   = 'tlsh isa fuzzy matching library, which hashes can be used for similarity comparison.'
+  spec.description   = 'tlsh is a fuzzy matching library, which hashes can be used for similarity comparison.'
   spec.homepage      = 'https://github.com/adamliesko/tlsh'
   spec.license       = 'MIT'
 
