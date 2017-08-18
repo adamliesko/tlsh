@@ -11,7 +11,17 @@ Gem::Specification.new do |spec|
   spec.email         = ['adamliesko@gmail.com']
 
   spec.summary       = 'A fuzzy matching library which creates hashes that can be used for similarity comparisons.'
-  spec.description   = 'tlsh is a fuzzy matching library, which hashes can be used for similarity comparison.'
+  spec.description = <<DESC
+tlsh is a fuzzy matching library, which hashes can be used for similarity comparison.
+Given a byte stream with a minimum length of 256 bytes, TLSH generates a hash value
+which can be used for similarity comparisons. Similar objects will have similar hash
+values which allow for the detection of similar objects by comparing their hash values.
+
+The computed hash is 35 bytes long (output as 70 hexadecimal characters).
+The first 3 bytes are used to capture the information about the file as a whole (length, ...),
+while the last 32 bytes are used to capture information about incremental parts of the file.
+DESC
+
   spec.homepage      = 'https://github.com/adamliesko/tlsh'
   spec.license       = 'MIT'
 
