@@ -23,10 +23,20 @@ Computing a diff between two files
 
 Getting a hash of a file
 ```ruby
-> tlsh = Tlsh.hash_file('./../fixtures/test_file_1', './../fixtures/test_file_2')
- => 501
-> tlsh.string.to_s
+> t1 = Tlsh.hash_file('./../fixtures/test_file_1')
+ => #<Tlsh::TlshInstance:0x007ffad6ae32c8 @checksum=232, @l_value=13, @q1_ratio=2, @q2_ratio=2, @q_ratio=34, @body=[2, 252, 48, 128, 35, 3, 160, 2, 176, 59, 51, 48, 15, 195, 10, 130, 248, 48, 8, 194, 250, 0, 10, 0, 128, 184, 186, 14, 2, 204, 160, 195]> 
+> t1.string.to_s
  => "b2317c38fac0333c8ff7d3ff31fcf3b7fb3f9a3ef3bf3c880cfc43ebf97f3cc73fbfc"
+```
+
+Comparing hashes between each other
+```ruby
+> t1 = Tlsh.hash_file('./../fixtures/test_file_1')
+ => #<Tlsh::TlshInstance:0x007ffad6ae32c8 @checksum=232, @l_value=13, @q1_ratio=2, @q2_ratio=2, @q_ratio=34, @body=[2, 252, 48, 128, 35, 3, 160, 2, 176, 59, 51, 48, 15, 195, 10, 130, 248, 48, 8, 194, 250, 0, 10, 0, 128, 184, 186, 14, 2, 204, 160, 195]> 
+> t2 = Tlsh.hash_file('./../fixtures/test_file_2')
+ => #<Tlsh::TlshInstance:0x007ffad79f1e90 @checksum=232, @l_value=13, @q1_ratio=2, @q2_ratio=2, @q_ratio=34, @body=[2, 252, 48, 128, 35, 3, 160, 2, 176, 59, 51, 48, 15, 195, 10, 130, 248, 48, 8, 194, 250, 0, 10, 0, 128, 184, 186, 14, 2, 204, 160, 195]>
+> t1.diff(t2)
+ => 488
 ```
 
 Getting a hash of bytes
